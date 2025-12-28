@@ -1,7 +1,22 @@
 import React from "react";
-import { House } from "lucide-react";
+import { House, LogOut } from "lucide-react";
+import { useDispatch, useSelector } from "react-redux";
+import { replace, useNavigate } from "react-router";
+import { logout } from "../features/authSlice";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
+//  let {}= useSelector((state)=>state.auth)
+  const dispatch = useDispatch()
+  const navigate =useNavigate()
+
+const handleLogout=()=>{
+  toast.error("Loged Out")
+  dispatch(logout())
+navigate("/",replace=true)
+
+}
+
   return (
     <nav className="w-full bg-black text-white px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
       
@@ -37,7 +52,7 @@ const Navbar = () => {
 
       {/* RIGHT SECTION */}
       <div className="flex items-center gap-4">
-        <button className="text-sm sm:text-base hover:text-green-500 transition">
+        <button onClick={handleLogout} className=" cursor-pointer text-sm sm:text-base hover:text-green-500 transition">
           Logout
         </button>
       </div>

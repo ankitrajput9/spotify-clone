@@ -4,6 +4,7 @@ import { FaGoogle, FaFacebookF, FaSpotify } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setToggle } from "../features/toggleSlice";
 import { setUser } from "../features/authSlice";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const dispatch = useDispatch()
@@ -23,7 +24,8 @@ console.log(data)
 console.log("Invalid Credentials")
 return;
  }
- console.log("loged In")
+ toast.success("Loged In")
+
  let loguser =localStorage.setItem("loguser",JSON.stringify(log))||[];
 dispatch(setUser(loguser))
   };

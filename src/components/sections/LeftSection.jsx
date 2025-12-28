@@ -35,7 +35,7 @@ navigate("/home")
         hidden sm:flex
         flex-col
         bg-black/10 text-white
-        w-64 md:w-72 lg:w-80
+        w-62 md:w-72 lg:w-70
         h-full
         border-r border-black
         overflow-y-auto

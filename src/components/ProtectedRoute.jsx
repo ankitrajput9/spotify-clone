@@ -7,7 +7,7 @@ const ProtectedRoute = () => {
     console.log(user)
    
          if (!user) {
-    return <Navigate to="/"  />;
+    return <Navigate to="/" replace />;
   }
     
   return <div><Outlet/></div>
