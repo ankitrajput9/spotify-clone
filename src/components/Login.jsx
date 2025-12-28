@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { FaGoogle, FaFacebookF, FaSpotify } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setToggle } from "../features/toggleSlice";
-import { setUser } from "../../../e-comm/src/feature/authSlice";
+import { setUser } from "../features/authSlice";
 
 const Login = () => {
   const dispatch = useDispatch()
