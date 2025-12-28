@@ -52,7 +52,7 @@ navigate("/",replace=true)
 
       {/* RIGHT SECTION */}
       <div className="flex items-center gap-4">
-        <button onClick={handleLogout} className=" cursor-pointer text-sm sm:text-base hover:text-green-500 transition">
+        <button onClick={handleLogout} className=" cursor-pointer text-sm sm:text-base bg-green-500 px-4 py-2 rounded-full hover:text-green-500 hover:bg-white transition">
           Logout
         </button>
       </div>

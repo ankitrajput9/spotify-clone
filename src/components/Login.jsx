@@ -21,7 +21,7 @@ console.log(data)
  let log = LSD.find((val)=>val.email === data.email && val.password === data.password)
 
  if(!log){
-console.log("Invalid Credentials")
+toast.error("Invalid Credentials")
 return;
  }
  toast.success("Loged In")

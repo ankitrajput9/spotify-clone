@@ -3,9 +3,10 @@ import { useForm } from "react-hook-form";
 import { FaGoogle, FaFacebookF, FaSpotify } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { setToggle } from "../features/toggleSlice";
+import { toast } from "react-toastify";
 
 const Register = () => {
-    const dispatch =useDispatch()
+    const dispatch = useDispatch()
   const {
     register,
     reset,
@@ -17,6 +18,8 @@ const Register = () => {
   const [userdata, setUserdata] = useState(JSON.parse(localStorage.getItem('reguser'))||[])
 
   const onSubmit = (data) => {
+    toast.success("Registered Successfully")
+    dispatch(setToggle(false))
     let arr = [...userdata,data]
     setUserdata(arr)
     localStorage.setItem('reguser',JSON.stringify(arr))
