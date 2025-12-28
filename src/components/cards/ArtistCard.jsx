@@ -1,17 +1,32 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 
 const ArtistCard = () => {
-   let {currentSong}= useSelector((state)=>state.music)
-  return (
-    <div className='h-[40%] w-[90%] absolute -bottom-35 ' >
-        <div className='relative '>
-        <img className='h-full w-full object-cover rounded-lg ' src={currentSong?.artistImg} alt="" />
-        <h1 className='absolute top-0 p-3 text-xl font-medium'>{currentSong?.artist}</h1>
-        </div>
+  const { currentSong } = useSelector((state) => state.music);
 
+  if (!currentSong) return null;
+
+  return (
+    <div className="w-full mt-4">
+      <div className="relative rounded-xl overflow-hidden">
+
+        {/* ARTIST IMAGE */}
+        <img
+          src={currentSong.artistImg}
+          alt={currentSong.artist}
+          className="w-full aspect-4/3 object-cover"
+        />
+
+        {/* OVERLAY */}
+        <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/20 to-transparent" />
+
+        {/* TEXT */}
+        <h1 className="absolute bottom-3 left-3 text-white text-lg font-semibold truncate">
+          {currentSong.artist}
+        </h1>
+      </div>
     </div>
   );
-}
+};
 
 export default ArtistCard;

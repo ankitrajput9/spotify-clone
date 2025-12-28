@@ -1,141 +1,140 @@
-import { Split } from 'lucide-react';
-import React, { useEffect, useRef, useState } from 'react';
-import { FaHeart, FaPlayCircle, FaRegHeart } from 'react-icons/fa';
-import { IoPlaySkipBackSharp, IoPlaySkipForward } from 'react-icons/io5';
-import { TiArrowLoop } from 'react-icons/ti';
-import { useDispatch, useSelector } from 'react-redux';
-import { PlayorPause } from '../../features/songSlice';
-import { FaPauseCircle } from "react-icons/fa";
-import { FcLike } from 'react-icons/fc';
-import { toggleLike } from '../../features/dataSlice';
-import { FcLikePlaceholder } from "react-icons/fc";
-
-
+import { Split } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
+import { FaHeart, FaPlayCircle, FaRegHeart, FaPauseCircle } from "react-icons/fa";
+import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
+import { TiArrowLoop } from "react-icons/ti";
+import { useDispatch, useSelector } from "react-redux";
+import { PlayorPause } from "../../features/songSlice";
+import { toggleLike } from "../../features/dataSlice";
 
 const Player = () => {
-  
-    //   Handle States And Redux 
+  const [seek, setSeek] = useState(0);
+  const [current, setCurrent] = useState(0);
+  const [duration, setDuration] = useState(0);
 
-    const [seek, setSeek] = useState('')
-    const [current, setCurrent] = useState(0)
-    const [duration, setDuration] = useState(0)
+  const { currentSong, isPlaying } = useSelector((state) => state.music);
+  const dispatch = useDispatch();
+  const audioref = useRef(null);
 
-    const {songs}= useSelector((state)=>state.data)
-    const { currentSong, isPlaying } = useSelector((state) => state.music)
-    const audioref = useRef()
-    const dispatch = useDispatch()
+  // Play / Pause handler
+  useEffect(() => {
+    if (!audioref.current) return;
 
-    const clickHandle = () => {
-        dispatch(PlayorPause())
+    if (currentSong && isPlaying) {
+      audioref.current.play();
+    } else {
+      audioref.current.pause();
     }
+  }, [currentSong, isPlaying]);
 
-    // Handlle Audio 
+  const formatTime = (time) => {
+    if (!time) return "00:00";
+    const m = Math.floor(time / 60);
+    const s = Math.floor(time % 60);
+    return `${m}:${s < 10 ? "0" : ""}${s}`;
+  };
 
-    useEffect(() => {
-        if (!audioref.current) return;
+  return (
+    <footer className="w-full bg-black text-white px-3 sm:px-6 py-2 flex flex-col sm:flex-row items-center gap-3">
 
-        if (currentSong && isPlaying) {
-            audioref.current.play();
-        } else {
-            audioref.current.pause();
-        }
-    }, [currentSong, isPlaying]);
+      {/* LEFT — SONG INFO (hidden on mobile if no song) */}
+      <div className="hidden sm:flex items-center gap-4 w-[30%]">
+        <img
+          src={currentSong?.img || "/music-placeholder.png"}
+          alt=""
+          className="h-12 w-12 object-cover rounded"
+        />
 
-    //  Time Formate 
-
-    const formatTime = (time) => {
-        if (!time) return "00:00";
-        const minutes = Math.floor(time / 60);
-        const seconds = Math.floor(time % 60);
-        return `${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-    };
-
-
-
-
-    return (
-        <div className=' flex justify-between h-[12%] bg-black'>
-            <div className='flex gap-5 w-[30%] items-center  p-3 ' >
-                <div className='h-12 w-12'>
-                    <img className='h-full w-full object-cover' src={currentSong?.img} alt="" />
-
-                 {/* Player left card  */}
-
-                </div>
-                <div className='text-white' >
-                    <h1>{currentSong?.title}</h1>
-                    <p className=''>{currentSong?.artist}</p>
-                </div>
-                <div>
-                    <butt 
-                    onClick={()=>dispatch(toggleLike(currentSong.id))} 
-                    className='cursor-pointer' >
-                     {currentSong?.liked ? (
-          <FaHeart className="text-green-500" /> 
-        ) : (
-          <FaRegHeart className="text-gray-400" />
-        )}  
-                        </butt>
-                </div>
-            </div>
-            <div className='flex flex-col w-full text-white justify-center items-center h-full'>
-                <div className='flex gap-4'>
-
-                    {/* Previous Button */}
-
-                    <button className='cursor-pointer text-gray-500/70 font-medium'><Split size={20} /></button>
-                    <button className='cursor-pointer'><IoPlaySkipBackSharp size={25} /></button>
-
-                    {/* Play And Pause Button  */}
-
-                    <button onClick={clickHandle} className='cursor-pointer'>{currentSong && isPlaying ? <FaPauseCircle size={39} /> : <FaPlayCircle size={39} />
-                    } </button>
-
-                    {/* Next button  */}
-
-                    <button className='cursor-pointer'><IoPlaySkipForward size={25} /> </button>
-                    <button className='cursor-pointer text-gray-500/70 font-medium'><TiArrowLoop size={20} /></button>
-                </div>
-
-                <audio
-                    ref={audioref}
-                    src={currentSong?.songUrl}
-                    onTimeUpdate={(e) => {
-                        setCurrent(e.target.currentTime);
-                        setSeek(e.target.currentTime);
-                    }}
-                    onLoadedMetadata={(e) => {
-                        setDuration(e.target.duration);
-                    }}
-                />
- 
-                  {/* Seek Bar   */}
-
-                <div className=' h-1 w-[40%] flex mt-2 justify-center items-center gap-2  '>
-                    <p>{formatTime(current)}</p>
-                    <input
-                        type="range"
-                        min="0"
-                        max={duration}
-                        value={seek}
-                        onChange={(e) => {
-                            const value = Number(e.target.value);
-                            audioref.current.currentTime = value;
-                            setSeek(value);
-                        }}
-                        className="w-full h-full cursor-pointer"
-                    />
-
-                    <p>{formatTime(duration)}</p>
-                </div>
-
-            </div>
-            <div className='text-white w-[30%]'>
-
-            </div>
-
+        <div className="truncate">
+          <h1 className="text-sm font-medium truncate">
+            {currentSong?.title || "No song playing"}
+          </h1>
+          <p className="text-xs text-gray-400 truncate">
+            {currentSong?.artist || ""}
+          </p>
         </div>
-    );
-}
+
+        {currentSong && (
+          <button
+            onClick={() => dispatch(toggleLike(currentSong.id))}
+            className="ml-2"
+          >
+            {currentSong.liked ? (
+              <FaHeart className="text-green-500" />
+            ) : (
+              <FaRegHeart className="text-gray-400" />
+            )}
+          </button>
+        )}
+      </div>
+
+      {/* CENTER — CONTROLS */}
+      <div className="flex flex-col items-center w-full sm:w-[40%]">
+        <div className="flex items-center gap-4">
+          <button className="hidden sm:block text-gray-500">
+            <Split size={18} />
+          </button>
+
+          <button>
+            <IoPlaySkipBackSharp size={22} />
+          </button>
+
+          <button
+            onClick={() => dispatch(PlayorPause())}
+            className="text-white"
+          >
+            {isPlaying ? (
+              <FaPauseCircle size={38} />
+            ) : (
+              <FaPlayCircle size={38} />
+            )}
+          </button>
+
+          <button>
+            <IoPlaySkipForward size={22} />
+          </button>
+
+          <button className="hidden sm:block text-gray-500">
+            <TiArrowLoop size={18} />
+          </button>
+        </div>
+
+        {/* SEEK BAR */}
+        <div className="flex items-center gap-2 w-full mt-2">
+          <span className="text-xs">{formatTime(current)}</span>
+
+          <input
+            type="range"
+            min="0"
+            max={duration || 0}
+            value={seek}
+            onChange={(e) => {
+              const val = Number(e.target.value);
+              audioref.current.currentTime = val;
+              setSeek(val);
+            }}
+            className="w-full cursor-pointer"
+          />
+
+          <span className="text-xs">{formatTime(duration)}</span>
+        </div>
+      </div>
+
+      {/* RIGHT — EMPTY (reserved for future controls) */}
+      <div className="hidden sm:block w-[30%]" />
+
+      {/* AUDIO */}
+      <audio
+        ref={audioref}
+        src={currentSong?.songUrl}
+        onTimeUpdate={(e) => {
+          setCurrent(e.target.currentTime);
+          setSeek(e.target.currentTime);
+        }}
+        onLoadedMetadata={(e) => setDuration(e.target.duration)}
+      />
+    </footer>
+  );
+};
 
 export default Player;

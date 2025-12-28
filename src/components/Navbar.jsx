@@ -1,19 +1,49 @@
-import React from 'react';
-import { House } from 'lucide-react';
+import React from "react";
+import { House } from "lucide-react";
 
 const Navbar = () => {
   return (
-    <div className='h-[8%] bg-black text-white px-5 flex items-center justify-between  ' >
-      <div className='flex gap-6 justify-center items-center' >
-        <img className='h-7' src="/Spotify.png" alt="" />
-        <House/>
-        <input className='w-80 py-2 px-3 rounded-full font-medium bg-gray-500/30' type="text" placeholder='Search' />
+    <nav className="w-full bg-black text-white px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      
+      {/* LEFT SECTION */}
+      <div className="flex items-center gap-4 sm:gap-6 flex-1">
+        
+        {/* Logo */}
+        <img
+          className="h-6 sm:h-7 cursor-pointer"
+          src="/Spotify.png"
+          alt="Spotify"
+        />
+
+        {/* Home Icon */}
+        <button className="hidden sm:block p-2 rounded-full bg-gray-700/30 hover:bg-gray-700/50">
+          <House size={20} />
+        </button>
+
+        {/* Search */}
+        <input
+          type="text"
+          placeholder="Search"
+          className="
+            hidden sm:block
+            w-full max-w-75 lg:max-w-100
+            py-2 px-4 rounded-full
+            bg-gray-500/30
+            placeholder-gray-300
+            focus:outline-none
+          "
+        />
       </div>
-      <div>
-        Login
+
+      {/* RIGHT SECTION */}
+      <div className="flex items-center gap-4">
+        <button className="text-sm sm:text-base hover:text-green-500 transition">
+          Logout
+        </button>
       </div>
-    </div>
+
+    </nav>
   );
-}
+};
 
 export default Navbar;

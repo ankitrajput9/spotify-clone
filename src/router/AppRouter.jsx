@@ -24,18 +24,17 @@ const router = createBrowserRouter([
   path:"/home",
   element:<ProtectedRoute/>,
   children:[{
-   index:true,
     element:<HomeLayout/>,
-    // children:[
-    //     {
-    //         index: true,        // /home
-    //         element: <Mainpage />,
-    //       },
-    //       // {
-    //       //   path: "like",       // /home/main
-    //       //   element: <Likedsongs/>,
-    //       // },
-    // ]
+     children: [
+          {
+            index: true,          // /home
+            element: <Mainpage />,
+          },
+          {
+            path: "liked",        // /home/liked
+            element: <Likedsongs />,
+          },
+        ],
   }]
 },
 ])
