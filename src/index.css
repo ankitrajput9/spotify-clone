@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+/* body{
+    background-color: black;
+} */
+
+#scroll::-webkit-scrollbar{
+display: none;
+}
+#leftscroll::-webkit-scrollbar{
+display: none;
+}
+#rightscroll::-webkit-scrollbar{
+display: none;
+}
+
+#songlist:hover button{
+    opacity: 100;
+}
+#songlist button{
+    transition: all ease 0.5s;
+}
+
+#songcard:hover button{
+    opacity: 100;
+}
+#songcard button{
+    transition: all ease 0.7s;
+}
+
+/* #scroll{
+    background-color: ;
+} */
