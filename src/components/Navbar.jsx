@@ -13,7 +13,7 @@ const Navbar = () => {
 const handleLogout=()=>{
   toast.error("Loged Out")
   dispatch(logout())
-navigate("/",replace=true)
+navigate("/",{replace:true})
 
 }
 
