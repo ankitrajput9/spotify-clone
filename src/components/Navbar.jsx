@@ -6,7 +6,7 @@ import { logout } from "../features/authSlice";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
-//  let {}= useSelector((state)=>state.auth)
+  
   const dispatch = useDispatch()
   const navigate =useNavigate()
 

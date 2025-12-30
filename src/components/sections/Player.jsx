@@ -1,17 +1,19 @@
-import { Split } from "lucide-react";
+import { Heart, Split } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { FaHeart, FaPlayCircle, FaRegHeart, FaPauseCircle } from "react-icons/fa";
 import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
 import { TiArrowLoop } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
-import { PlayorPause } from "../../features/songSlice";
+import { PlayorPause, setcurrentSong } from "../../features/songSlice";
 import { toggleLike } from "../../features/dataSlice";
+import { FcLikePlaceholder } from "react-icons/fc";
+
 
 const Player = () => {
   const [seek, setSeek] = useState(0);
   const [current, setCurrent] = useState(0);
   const [duration, setDuration] = useState(0);
-
+  const { songs } = useSelector((state) => state.data)
   const { currentSong, isPlaying } = useSelector((state) => state.music);
   const dispatch = useDispatch();
   const audioref = useRef(null);
@@ -33,6 +35,24 @@ const Player = () => {
     const s = Math.floor(time % 60);
     return `${m}:${s < 10 ? "0" : ""}${s}`;
   };
+
+
+  const handleNext = () => {
+    let nextsong = songs.find((val) => val.id === currentSong?.id + 1)
+    if (!nextsong) {
+      nextsong = songs[0]
+    }
+    dispatch(setcurrentSong(nextsong))
+  }
+
+
+  const handlePrevious = () => {
+    let previous = songs.find((val) => val.id === currentSong?.id - 1)
+    if (!previous) {
+      previous = songs[songs.length - 1]
+    }
+    dispatch(setcurrentSong(previous))
+  }
 
   return (
     <footer className="w-full bg-black text-white px-3 sm:px-6 py-2 flex flex-col sm:flex-row items-center gap-3">
@@ -56,13 +76,13 @@ const Player = () => {
 
         {currentSong && (
           <button
-            onClick={() => dispatch(toggleLike(currentSong.id))}
+            onClick={() => dispatch(toggleLike(currentSong?.id))}
             className="ml-2"
           >
-            {currentSong.liked ? (
-              <FaHeart className="text-green-500" />
+            {currentSong?.liked ? (
+              <FcLikePlaceholder />
             ) : (
-              <FaRegHeart className="text-gray-400" />
+              <Heart color="gray" className="cursor-pointer" />
             )}
           </button>
         )}
@@ -75,13 +95,17 @@ const Player = () => {
             <Split size={18} />
           </button>
 
-          <button>
+          {/* Play Previous  */}
+
+          <button onClick={handlePrevious} className="active:scale-95 cursor-pointer">
             <IoPlaySkipBackSharp size={22} />
           </button>
 
+          {/* Play or Pause  */}
+
           <button
             onClick={() => dispatch(PlayorPause())}
-            className="text-white"
+            className="text-white  active:scale-95"
           >
             {isPlaying ? (
               <FaPauseCircle size={38} />
@@ -89,8 +113,10 @@ const Player = () => {
               <FaPlayCircle size={38} />
             )}
           </button>
+          {/* Play Next  */}
 
-          <button>
+          <button className="cursor-pointer active:scale-95 " onClick={handleNext} >
+
             <IoPlaySkipForward size={22} />
           </button>
 

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
 const likedsongSlice =createSlice({
     name:'liked',
     initialState:{
@@ -11,5 +12,6 @@ const likedsongSlice =createSlice({
         }
     }
 })
+
 export const {setLiked}= likedsongSlice.actions;
 export default likedsongSlice.reducer

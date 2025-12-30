@@ -1,40 +1,34 @@
-  import React from "react";
-  import { useSelector } from "react-redux";
-  import Songcard from "../components/cards/Songcard";
+import React from "react";
+import { useSelector } from "react-redux";
+import SongList from "../components/cards/SongList";
 
-  const LikedSongs = () => {
-    const { songs } = useSelector((state) => state.data);
 
-    const likedSongs = songs.filter((song) => song.liked);
+const LikedSongs = () => {
+  const { songs } = useSelector((state) => state.data);
 
-    return (
-      <main className="flex-1 min-h-0 overflow-y-auto bg-black/90">
-        <div className="p-6">
-          <h1 className="text-2xl font-bold text-white mb-6">
-            ❤️ Liked Songs
-          </h1>
+  const likedSongs = songs.filter((song) => song.liked);
+  console.log(likedSongs[0]?.img)
 
-          {likedSongs.length === 0 ? (
-            <p className="text-gray-400">No liked songs yet</p>
-          ) : (
-            <div
-              className="
-                grid
-                grid-cols-2
-                sm:grid-cols-3
-                md:grid-cols-4
-                lg:grid-cols-5
-                gap-4
-              "
-            >
-              {likedSongs.map((elem) => (
-                <Songcard key={elem.id} elem={elem} />
-              ))}
+  return (
+    <main className="flex-1 min-h-0 overflow-y-auto">
+      <div className="h-screen bg-linear-to-b from-red-900  to-black ">
+        <div className="h-[40%]   flex items-center gap-4 p-4">
+          <div className="h-[89%] w-[30%] rounded-2xl overflow-hidden "><img className="h-full w-full" src="https://imgs.search.brave.com/SwjPUOrIWUGlfT3ARyenZA1tto60KZv7TzqAaVjrMH4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNzEv/ODcwLzQ4MC9zbWFs/bC9hLW11c2ljLW5v/dGUtc2hhcGUtaXMt/bWFkZS1mcm9tLW1h/bnktdGlueS1ub3Rl/cy1icmVha2luZy1h/cGFydC1pbnRvLXRo/ZS1haXItcGhvdG8u/anBlZw" alt="" /></div>
+          <div className=" flex flex-col gap-3">
+            <p>Public Playlist</p>
+            <h1 className="text-7xl font-bold" >Liked Songs</h1>
+            <div className="mt-6">
+              <p className="font-medium">Spotify .<span className="text-white/50 font-medium" >80 Saves</span> <span className="text-white/50 font-medium" >.5123 songs,over 24hr</span></p>
             </div>
-          )}
+          </div>
         </div>
-      </main>
-    );
-  };
+        <div>
+        {likedSongs.map((elem)=><SongList key={elem.id} elem={elem}/>)}
 
-  export default LikedSongs;
+        </div>
+      </div>
+    </main>
+  );
+};
+
+export default LikedSongs;
