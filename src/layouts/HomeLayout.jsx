@@ -34,7 +34,7 @@ const HomeLayout = () => {
       </div>
 
       {/* PLAYER (ALWAYS VISIBLE) */}
-      <div className="h-19.5">
+      <div className="h-22.5">
         <Player />
       </div>
 

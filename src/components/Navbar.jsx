@@ -31,7 +31,7 @@ navigate("/",{replace:true})
         />
 
         {/* Home Icon */}
-        <button className="hidden sm:block p-2 rounded-full bg-gray-700/30 hover:bg-gray-700/50">
+        <button onClick={()=> navigate("/home")} className=" cursor-pointer hidden sm:block p-2 rounded-full bg-gray-700/30 hover:bg-gray-700/50">
           <House size={20} />
         </button>
 
