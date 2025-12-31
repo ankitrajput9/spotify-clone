@@ -70,10 +70,9 @@ const Player = () => {
     px-3 sm:px-6 py-2
     flex flex-col sm:flex-row
     items-center gap-3
-
+ fixed bottom-0 left-0 z-50
     /* Base */
     bg-[#0b0a12]
-    relative
 
     /* Purple glow */
     before:absolute before:inset-0
