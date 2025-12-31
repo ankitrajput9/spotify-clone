@@ -5,33 +5,34 @@ const dataSlice = createSlice(
     name: 'data',
     initialState: {
       songs: [
-        {
+          {
           id: 0,
-          title: "Blue Eyes",
-          artist: "Honey Singh",
-          artistImg: "https://imgs.search.brave.com/5GLASWZnR5Ap7Svnmet7T5O3_kmb2ihN9nqeiy4wYYM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9waG90/b3NmaWxlLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMi8w/Mi9Zby1Zby1Ib25l/eS1TaW5naC00NS5q/cGVn",
-          img: "./images/blueeyes.png",
           liked: false,
-          songUrl: "/song/Blue Eyes.mp3",
+          title: "Sapphire",
+          artist: "ed Sheeren",
+          artistImg: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+          img: "/images/sapphire.webp",
+          songUrl: "./song/Sapphire.mp3",
         },
-        {
+         {
           id: 1,
           liked: false,
-          title: "Barbaad",
-          artist: "Jubin Nautiyal",
-          artistImg: "https://imgs.search.brave.com/8tX58Qn7y30mL3i_QPxZYa2rJhZjS_w68Q66Eiv7kcU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zb3Np/bWcuc2dwMS5jZG4u/ZGlnaXRhbG9jZWFu/c3BhY2VzLmNvbS9h/cnRpc3QtZ2FsbGVy/eS82MjAwMzMxXzE3/MDIwMzEwMzEud2Vi/cA",
-          img: "./images/BarbaadImg.png",
-          songUrl: "/song/Barbaad.mp3",
+          title: "What Makes you Beautiful",
+          artist: "One Direction",
+          artistImg: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+          img: "/images/beauty.webp",
+          songUrl: "./song/Beautiful.mp3",
         },
-        {
+          {
           id: 2,
           liked: false,
-          title: "Saiyaara",
-          artist: "Faheem Abdullah",
-          artistImg: "https://imgs.search.brave.com/Qu7i4wZ9pXBvWOenRBxlA8zC0aevDkcQD-9f1RWJcuM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFPZ1hGUzdJQUwu/anBn",
-          img: "./images/SaiyaaraImg.png",
-          songUrl: "/song/Saiyaara.mp3",
+          title: "Night Changes",
+          artist: "One Direction",
+          artistImg: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+          img: "/images/beauty.webp",
+          songUrl: "./song/Night Changes.mp3",
         },
+       
         {
           id: 3,
           liked: false,
@@ -124,22 +125,32 @@ const dataSlice = createSlice(
         },
          {
           id: 13,
+          title: "Blue Eyes",
+          artist: "Honey Singh",
+          artistImg: "https://imgs.search.brave.com/5GLASWZnR5Ap7Svnmet7T5O3_kmb2ihN9nqeiy4wYYM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9waG90/b3NmaWxlLmNvbS93/cC1jb250ZW50L3Vw/bG9hZHMvMjAyMi8w/Mi9Zby1Zby1Ib25l/eS1TaW5naC00NS5q/cGVn",
+          img: "./images/blueeyes.png",
           liked: false,
-          title: "Sapphire",
-          artist: "ed Sheeren",
-          artistImg: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-          img: "/images/sapphire.webp",
-          songUrl: "./song/Sapphire.mp3",
+          songUrl: "/song/Blue Eyes.mp3",
         },
-         {
+        {
           id: 14,
           liked: false,
-          title: "What Makes you Beautiful",
-          artist: "One Direction",
-          artistImg: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-          img: "/images/beauty.webp",
-          songUrl: "./song/Beautiful.mp3",
+          title: "Barbaad",
+          artist: "Jubin Nautiyal",
+          artistImg: "https://imgs.search.brave.com/8tX58Qn7y30mL3i_QPxZYa2rJhZjS_w68Q66Eiv7kcU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zb3Np/bWcuc2dwMS5jZG4u/ZGlnaXRhbG9jZWFu/c3BhY2VzLmNvbS9h/cnRpc3QtZ2FsbGVy/eS82MjAwMzMxXzE3/MDIwMzEwMzEud2Vi/cA",
+          img: "./images/BarbaadImg.png",
+          songUrl: "/song/Barbaad.mp3",
         },
+        {
+          id: 15,
+          liked: false,
+          title: "Saiyaara",
+          artist: "Faheem Abdullah",
+          artistImg: "https://imgs.search.brave.com/Qu7i4wZ9pXBvWOenRBxlA8zC0aevDkcQD-9f1RWJcuM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFPZ1hGUzdJQUwu/anBn",
+          img: "./images/SaiyaaraImg.png",
+          songUrl: "/song/Saiyaara.mp3",
+        },
+       
        
 
       ]

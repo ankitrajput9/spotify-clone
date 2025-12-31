@@ -68,7 +68,7 @@ navigate("/home")
   </button>
   <button 
   onClick={recentclick} 
-  className="cursor-pointer py-2 flex items-center gap-5 px-2 w-full rounded-md bg-linear-to-r from-blue-900 to-white/10 ">
+  className="cursor-pointer py-1 flex items-center gap-5 px-2 w-full rounded-md bg-linear-to-r from-blue-900 to-white/10 ">
      <img className="h-15 rounded-lg " src="https://images.pexels.com/photos/352505/pexels-photo-352505.jpeg" alt="" />
   <p className="text-lg font-medium" >Recent</p>
     </button>

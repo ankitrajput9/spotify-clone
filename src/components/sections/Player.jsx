@@ -1,14 +1,12 @@
 import { Heart, Split } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { FaHeart, FaPlayCircle, FaRegHeart, FaPauseCircle } from "react-icons/fa";
+import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
 import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
 import { TiArrowLoop } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
 import { PlayorPause, setcurrentSong } from "../../features/songSlice";
-// import { toggleLike } from "../../features/dataSlice";
 import { FcLikePlaceholder } from "react-icons/fc";
-import { setLiked } from "../../features/likedsongSlice";
-
+import { removeLiked, setLiked } from "../../features/likedsongSlice";
 
 const Player = () => {
   const [seek, setSeek] = useState(0);
@@ -16,7 +14,7 @@ const Player = () => {
   const [duration, setDuration] = useState(0);
   const { songs } = useSelector((state) => state.data)
   const { currentSong, isPlaying } = useSelector((state) => state.music);
-  const {liked}= useSelector((state)=>state.liked)
+  const { liked } = useSelector((state) => state.liked)
   const dispatch = useDispatch();
   const audioref = useRef(null);
 
@@ -56,9 +54,12 @@ const Player = () => {
     dispatch(setcurrentSong(previous))
   }
 
-  const handleLike =()=>{
-dispatch(setLiked(currentSong))
+  const handleLike = () => {
+    dispatch(setLiked(currentSong))
 
+  }
+  const handleremove = () => {
+    dispatch(removeLiked(currentSong))
   }
 
   return (
@@ -81,14 +82,21 @@ dispatch(setLiked(currentSong))
           </p>
         </div>
 
-        {currentSong && (
+        {liked.find((val) => val.id === currentSong.id) ?
           <button
-          onClick={handleLike}
-            className="ml-2 cursor-pointer "
-          >
-            <FcLikePlaceholder   size={25}/>
+            onClick={handleremove}
+            className="ml-2 cursor-pointer " >
+            <FcLikePlaceholder size={25} />
+
           </button>
-        )}
+          :
+          <button
+            onClick={handleLike}
+            className="ml-2 cursor-pointer " >
+            <Heart size={25} />
+          </button>
+        }
+
       </div>
 
       {/* CENTER — CONTROLS */}
