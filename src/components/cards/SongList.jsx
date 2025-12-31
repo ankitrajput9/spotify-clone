@@ -14,7 +14,7 @@ const dispatch = useDispatch()
     return (
       <div  className='flex justify-between px-3 items-center hover:bg-black/20 cursor-pointer transition ' >
       <div id='songlist' className='h-18 flex items-center   gap-6 px-4 '>
-            <div onClick={()=>{currentSong?.id === elem.id?dispatch(PlayorPause()):dispatch(setcurrentSong(elem))}} className='h-13 w-13 rounded-full overflow-hidden relative ' >
+            <div onClick={()=>currentSong?.id === elem.id?dispatch(PlayorPause()):dispatch(setcurrentSong(elem))} className='h-13 w-13 rounded-full overflow-hidden relative ' >
                 <img className='h-full w-full object-cover' src={elem.img} alt="" />
                 <button className=' absolute top-3 left-3 cursor-pointer opacity-0 ' > <FaCirclePlay size={30} color='#60C95A' /></button>
             </div>

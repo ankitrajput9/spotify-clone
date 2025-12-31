@@ -6,6 +6,7 @@ import SongList from "../cards/SongList";
 import { useSelector } from "react-redux";
 import { CiCircleList } from "react-icons/ci";
 import { useNavigate } from "react-router";
+import { Heart } from "lucide-react";
 
 const LeftSection = () => {
   const  navigate =useNavigate()
@@ -63,7 +64,9 @@ navigate("/home")
   <button 
   onClick={likedclick} 
   className="cursor-pointer py-1 px-2 flex items-center gap-5  w-full rounded-md bg-linear-to-r from-pink-900 to-white/10 ">
-  <img className="h-15 rounded-lg " src="https://imgs.search.brave.com/PzL75LTDNKUUFUaNL9tOV2GQSPAPgyMZ9lqbUW-0YHo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9oZWFkcGhvbmVz/LXdpdGgtbXVzaWMt/bm90ZXMtaGVhZGJh/bmQtcHVycGxlLWJh/Y2tncm91bmRfMTIw/NDQ1MC0xODQ1My5q/cGc_c2VtdD1haXNf/aHlicmlkJnc9NzQw/JnE9ODA" alt="" />
+ <div className="h-15 w-15 rounded-lg flex justify-center items-center bg-linear-to-t from-purple-800 mask-t-from-fuchsia-900">
+            <Heart size={40} />
+            </div>
   <p className="text-lg font-medium" >Liked</p>
   </button>
   <button 

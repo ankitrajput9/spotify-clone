@@ -6,6 +6,8 @@ import { useSelector } from "react-redux";
 const Mainpage = () => {
   const { songs } = useSelector((state) => state.data);
 
+  const user = JSON.parse(localStorage.getItem("loguser"))
+
   return (
    <main
   id="scroll"
@@ -26,7 +28,7 @@ const Mainpage = () => {
 
         <div className="flex justify-between items-center mb-4">
           <h1 className="text-xl sm:text-2xl font-bold text-white">
-            Ankit Rajput
+           {user.username}
           </h1>
           <p className="text-sm font-medium text-gray-400/70 cursor-pointer hover:text-white">
             Show All
