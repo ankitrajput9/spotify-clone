@@ -13,7 +13,7 @@ const HomeLayout = () => {
       <Navbar />
 
       {/* MAIN BODY */}
-      <div className="flex flex-1 overflow-hidden text-white">
+      <div className="flex flex-1  gap-2 overflow-hidden text-white">
 
         {/* LEFT SIDEBAR */}
         <div className="hidden md:block md:w-[28%] lg:w-[22%]">
@@ -21,7 +21,7 @@ const HomeLayout = () => {
         </div>
 
         {/* MAIN CONTENT */}
-        <div className="flex flex-1 min-h-0">
+        <div className="flex w-full min-h-0 ">
            <Outlet/>
           {/* <Mainpage /> */}
         </div>
@@ -34,7 +34,7 @@ const HomeLayout = () => {
       </div>
 
       {/* PLAYER (ALWAYS VISIBLE) */}
-      <div className="h-22.5">
+      <div className="h-19.5">
         <Player />
       </div>
 

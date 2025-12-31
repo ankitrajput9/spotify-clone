@@ -6,18 +6,26 @@ const RightSection = () => {
   const { currentSong } = useSelector((state) => state.music);
 
   return (
-    <aside
-      id="rightscroll"
-      className="
-        hidden lg:flex
-        flex-col
-        w-72 xl:w-80
-        h-full
-        bg-black/90
-        border-l border-black
-        overflow-y-auto
-      "
-    >
+ <aside
+  id="rightscroll"
+  className="
+    hidden lg:flex
+    flex-col
+    w-70 xl:w-70
+    h-full
+    border-l border-black
+    overflow-y-auto
+    rounded-lg
+
+    /* Background effect */
+    bg-[#0b0f0c]
+    relative
+    before:absolute before:inset-0
+    before:bg-[radial-gradient(circle_at_top_right,rgba(34,197,94,0.12),transparent_45%)]
+    before:pointer-events-none
+  "
+>
+
       <div className="flex flex-col items-center px-4 py-6 gap-4">
 
         {/* IMAGE */}

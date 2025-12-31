@@ -9,7 +9,8 @@ const LikedSongs = () => {
  
 
   return (
-    <main id="likedscroll" className="flex-1 min-h-0 overflow-y-auto">
+    <main id="likedscroll" className="flex-1 min-h-0 overflow-y-auto     rounded-lg
+">
       <div className="h-screen bg-linear-to-b from-red-900  to-black ">
         <div className="h-[40%]   flex items-center gap-4 p-4">
           <div className="h-[89%] w-[30%] rounded-2xl overflow-hidden ">

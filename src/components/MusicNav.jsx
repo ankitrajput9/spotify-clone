@@ -7,7 +7,7 @@ const MusicNav = () => {
         sticky top-0 z-20
         flex items-center gap-2
         px-4 py-3
-        bg-black/70 backdrop-blur-md
+        bg-black/40 backdrop-blur-md
         overflow-x-auto
         scrollbar-hide
       "

@@ -9,15 +9,31 @@ const Mainpage = () => {
   const user = JSON.parse(localStorage.getItem("loguser"))
 
   return (
-   <main
+<main
   id="scroll"
   className="
     flex-1
     min-h-0
-    bg-black/10
     overflow-y-auto
+    rounded-lg
+
+    /* Base */
+    bg-[#0b0f0c]
+    relative
+
+    /* Left glow */
+    before:absolute before:inset-0
+    before:bg-[radial-gradient(circle_at_left,rgba(34,197,94,0.12),transparent_45%)]
+    before:pointer-events-none
+
+    /* Right glow */
+    after:absolute after:inset-0
+    after:bg-[radial-gradient(circle_at_right,rgba(34,197,94,0.12),transparent_45%)]
+    after:pointer-events-none
   "
 >
+
+
 
       {/* TOP NAV */}
       <MusicNav />

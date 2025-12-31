@@ -23,20 +23,29 @@ navigate("/home")
 
 
   return (
-    <aside
-      id="leftscroll"
-      className="
-        hidden sm:flex
-        flex-col
-        bg-black/10 text-white
-        w-62 md:w-72 lg:w-70
-        h-full
-        border-r border-black
-        overflow-y-auto
-      "
-    >
+   <aside
+  id="leftscroll"
+  className="
+  rounded-lg
+    hidden sm:flex
+    flex-col
+    text-white
+    w-62 md:w-72 lg:w-70
+    h-full
+    border-r border-black
+    overflow-y-auto
+
+    /* Background effect */
+    bg-[#0b0f0c]
+    relative
+    before:absolute before:inset-0
+    before:bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.12),transparent_45%)]
+    before:pointer-events-none
+  "
+>
+
       {/* HEADER */}
-      <div className="flex justify-between items-center px-4 py-3 sticky top-0 bg-black/90 backdrop-blur z-10">
+      <div className="flex justify-between items-center px-4 py-3 sticky top-0 backdrop-blur z-10">
         <h1 className="font-medium text-sm sm:text-base">Your Library</h1>
         <div className="flex gap-3 items-center">
           <button className="hover:text-green-500">

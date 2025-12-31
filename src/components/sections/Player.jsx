@@ -63,7 +63,24 @@ const Player = () => {
   }
 
   return (
-    <footer className="w-full bg-black text-white px-3 sm:px-6 py-2 flex flex-col sm:flex-row items-center gap-3">
+<footer
+  className="
+    w-full
+    text-white
+    px-3 sm:px-6 py-2
+    flex flex-col sm:flex-row
+    items-center gap-3
+
+    /* Base */
+    bg-[#0b0a12]
+    relative
+
+    /* Purple glow */
+    before:absolute before:inset-0
+    before:bg-[radial-gradient(circle_at_bottom,rgba(168,85,247,0.18),transparent_55%)]
+    before:pointer-events-none
+  "
+>
 
       {/* LEFT — SONG INFO (hidden on mobile if no song) */}
       <div className="hidden sm:flex items-center gap-4 w-[30%]">
