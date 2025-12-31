@@ -5,8 +5,9 @@ import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
 import { TiArrowLoop } from "react-icons/ti";
 import { useDispatch, useSelector } from "react-redux";
 import { PlayorPause, setcurrentSong } from "../../features/songSlice";
-import { toggleLike } from "../../features/dataSlice";
+// import { toggleLike } from "../../features/dataSlice";
 import { FcLikePlaceholder } from "react-icons/fc";
+import { setLiked } from "../../features/likedsongSlice";
 
 
 const Player = () => {
@@ -15,6 +16,7 @@ const Player = () => {
   const [duration, setDuration] = useState(0);
   const { songs } = useSelector((state) => state.data)
   const { currentSong, isPlaying } = useSelector((state) => state.music);
+  const {liked}= useSelector((state)=>state.liked)
   const dispatch = useDispatch();
   const audioref = useRef(null);
 
@@ -54,6 +56,11 @@ const Player = () => {
     dispatch(setcurrentSong(previous))
   }
 
+  const handleLike =()=>{
+dispatch(setLiked(currentSong))
+
+  }
+
   return (
     <footer className="w-full bg-black text-white px-3 sm:px-6 py-2 flex flex-col sm:flex-row items-center gap-3">
 
@@ -76,14 +83,10 @@ const Player = () => {
 
         {currentSong && (
           <button
-            onClick={() => dispatch(toggleLike(currentSong?.id))}
-            className="ml-2"
+          onClick={handleLike}
+            className="ml-2 cursor-pointer "
           >
-            {currentSong?.liked ? (
-              <FcLikePlaceholder />
-            ) : (
-              <Heart color="gray" className="cursor-pointer" />
-            )}
+            <FcLikePlaceholder   size={25}/>
           </button>
         )}
       </div>

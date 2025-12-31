@@ -9,21 +9,14 @@ import { useNavigate } from "react-router";
 
 const LeftSection = () => {
   const  navigate =useNavigate()
-  const { songs } = useSelector((state) => state.data);
-  const [likedsong, setLikedsong] = useState(false);
-
-  const displayedSong = likedsong
-    ? songs.filter((song) => song.liked)
-    : songs;
+ const {liked}=useSelector((state)=>state.liked)
 
 
 const likedclick=()=>{
-    setLikedsong(true)
     navigate("/home/liked")
 
 }
 const recentclick=()=>{
-setLikedsong(false)
 navigate("/home")
 }
 
@@ -53,34 +46,7 @@ navigate("/home")
           </button>
         </div>
       </div>
-
-      {/* FILTER BUTTONS */}
-      <div className="flex gap-2 px-4 py-3 sticky top-13 bg-black/90 backdrop-blur z-10 border-b border-black">
-        <button
-          onClick={recentclick}
-          className={`px-4 py-1 rounded-full text-sm transition cursor-pointer
-            ${
-              !likedsong
-                ? "bg-white text-black"
-                : "bg-gray-400/20 text-white"
-            }`}
-        >
-          Recent
-        </button>
-
-        <button
-          onClick={likedclick}
-          className={`px-4 py-1 rounded-full text-sm transition cursor-pointer
-            ${
-              likedsong
-                ? "bg-white text-black"
-                : "bg-gray-400/20 text-white"
-            }`}
-        >
-          Liked
-        </button>
-      </div>
-
+  
       {/* SEARCH + SORT */}
       <div className="flex justify-between items-center px-4 py-3 text-gray-300">
         <button className="hover:text-white">
@@ -93,18 +59,24 @@ navigate("/home")
         </button>
       </div>
 
-      {/* SONG LIST */}
-      <div className="flex flex-col gap-2 px-2 pb-4">
-        {displayedSong.length > 0 ? (
-          displayedSong.map((elem) => (
-            <SongList key={elem.id} elem={elem} />
-          ))
-        ) : (
-          <p className="text-sm text-gray-400 text-center mt-6">
-            No liked songs
-          </p>
-        )}
-      </div>
+<div className="flex flex-col items-center gap-3 p-2">
+  <button 
+  onClick={likedclick} 
+  className="cursor-pointer py-1 px-2 flex items-center gap-5  w-full rounded-md bg-linear-to-r from-pink-900 to-white/10 ">
+  <img className="h-15 rounded-lg " src="https://imgs.search.brave.com/PzL75LTDNKUUFUaNL9tOV2GQSPAPgyMZ9lqbUW-0YHo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/ZnJlZXBpay5jb20v/cHJlbWl1bS1waG90/by9oZWFkcGhvbmVz/LXdpdGgtbXVzaWMt/bm90ZXMtaGVhZGJh/bmQtcHVycGxlLWJh/Y2tncm91bmRfMTIw/NDQ1MC0xODQ1My5q/cGc_c2VtdD1haXNf/aHlicmlkJnc9NzQw/JnE9ODA" alt="" />
+  <p className="text-lg font-medium" >Liked</p>
+  </button>
+  <button 
+  onClick={recentclick} 
+  className="cursor-pointer py-2 flex items-center gap-5 px-2 w-full rounded-md bg-linear-to-r from-blue-900 to-white/10 ">
+     <img className="h-15 rounded-lg " src="https://images.pexels.com/photos/352505/pexels-photo-352505.jpeg" alt="" />
+  <p className="text-lg font-medium" >Recent</p>
+    </button>
+
+  
+</div>
+   
+    
     </aside>
   );
 };

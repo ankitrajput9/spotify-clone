@@ -4,10 +4,8 @@ import SongList from "../components/cards/SongList";
 
 
 const LikedSongs = () => {
-  const { songs } = useSelector((state) => state.data);
-
-  const likedSongs = songs.filter((song) => song.liked);
-  console.log(likedSongs[0]?.img)
+  const { liked } = useSelector((state) => state.liked);
+ 
 
   return (
     <main className="flex-1 min-h-0 overflow-y-auto">
@@ -22,8 +20,11 @@ const LikedSongs = () => {
             </div>
           </div>
         </div>
-        <div>
-        {likedSongs.map((elem)=><SongList key={elem.id} elem={elem}/>)}
+
+        <div className="bg-black/20">
+
+       
+    {liked.map((elem)=><SongList key={elem.id} elem={elem} />)}
 
         </div>
       </div>
