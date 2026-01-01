@@ -3,9 +3,12 @@ import Mainpage from "../pages/Mainpage";
 import LeftSection from "../components/sections/LeftSection";
 import RightSection from "../components/sections/RightSection";
 import Player from "../components/sections/Player";
-import { Outlet } from "react-router";
+import { Outlet, useLocation } from "react-router";
 
 const HomeLayout = () => {
+    let {pathname}= useLocation()
+   
+  
   return (
     <div className="h-screen flex flex-col bg-black">
 
@@ -34,7 +37,7 @@ const HomeLayout = () => {
       </div>
 
       {/* PLAYER (ALWAYS VISIBLE) */}
-      <div className="h-19.5">
+      <div className={`h-19.5 ${pathname==="/home/player"? "hidden":" "} `}>
         <Player />
       </div>
 

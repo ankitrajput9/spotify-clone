@@ -6,6 +6,7 @@ import ProtectedRoute from '../components/ProtectedRoute';
 import PublicRoute from '../components/PublicRoute';
 import Mainpage from '../pages/Mainpage';
 import Likedsongs from '../pages/Likedsongs';
+import Mainplayer from '../pages/Mainplayer';
 
 const App = () => {
 
@@ -34,6 +35,10 @@ const router = createBrowserRouter([
             path: "liked",        // /home/liked
             element: <Likedsongs />,
           },
+          {
+            path:"player",
+            element:<Mainplayer/>
+          }
         ],
   }]
 },

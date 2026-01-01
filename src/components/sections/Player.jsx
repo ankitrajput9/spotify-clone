@@ -1,4 +1,4 @@
-import { Heart, Split } from "lucide-react";
+import { Heart, Shuffle, Split } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
 import { FaPlayCircle, FaPauseCircle } from "react-icons/fa";
 import { IoPlaySkipBackSharp, IoPlaySkipForward } from "react-icons/io5";
@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { PlayorPause, setcurrentSong } from "../../features/songSlice";
 import { FcLikePlaceholder } from "react-icons/fc";
 import { removeLiked, setLiked } from "../../features/likedsongSlice";
+import { useNavigate } from "react-router";
 
 const Player = () => {
   const [seek, setSeek] = useState(0);
@@ -19,6 +20,7 @@ const Player = () => {
 
   const dispatch = useDispatch();
   const audioref = useRef(null);
+  const navigate = useNavigate()
 
   /* Play / Pause */
   useEffect(() => {
@@ -50,6 +52,7 @@ const Player = () => {
 
   return (
     <footer
+   
       className="
         w-full
         text-white
@@ -65,7 +68,7 @@ const Player = () => {
       "
     >
       {/* LEFT — SONG CARD (mobile + desktop) */}
-      <div className="flex items-center gap-4 w-full sm:w-[30%]">
+      <div  onClick={()=>navigate("/home/player")} className="flex items-center gap-4 w-full sm:w-[30%]">
         <img
           src={currentSong?.img || "/music-placeholder.png"}
           alt=""
@@ -97,7 +100,8 @@ const Player = () => {
       <div className="hidden sm:flex flex-col items-center w-[40%]">
         <div className="flex items-center gap-4">
           <button className="text-gray-500">
-            <Split size={18} />
+               <Shuffle size={18} />
+
           </button>
 
           <button onClick={handlePrevious}>
