@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const MusicNav = () => {
+  const navigate= useNavigate()
   return (
     <div
       className="
@@ -11,10 +13,16 @@ const MusicNav = () => {
         overflow-x-auto
         scrollbar-hide
       "
-    >
-      <NavButton label="All" />
-      <NavButton label="Music" />
+      >
+           <button  onClick={()=>navigate("/home")} className="cursor-pointer">
+         <NavButton label="Home" />
+        </button>  
+      <button onClick={()=>navigate("/home/liked")} className="cursor-pointer">
+      <NavButton  label="Liked" />
+        </button>    
+           <button className="cursor-pointer">
       <NavButton label="Podcast" />
+        </button>   
     </div>
   );
 };
