@@ -7,6 +7,7 @@ import PublicRoute from '../components/PublicRoute';
 import Mainpage from '../pages/Mainpage';
 import Likedsongs from '../pages/Likedsongs';
 import Mainplayer from '../pages/Mainplayer';
+import PrivacyPolicy from '../components/PrivacyPolicy';
 
 const App = () => {
 
@@ -17,7 +18,11 @@ const router = createBrowserRouter([
     children:[{
       index:true,
       element:<AuthLayout/>
-    }]
+    },
+   {
+        path: "privacy-policy",
+        element: <PrivacyPolicy />,
+      },]
 
 //  Component:AuthLayout                   //  we can call component like that also in router 
 },

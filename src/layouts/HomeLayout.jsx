@@ -4,6 +4,7 @@ import LeftSection from "../components/sections/LeftSection";
 import RightSection from "../components/sections/RightSection";
 import Player from "../components/sections/Player";
 import { Outlet, useLocation } from "react-router";
+import PrivacyPolicy from "../components/PrivacyPolicy";
 
 const HomeLayout = () => {
     let {pathname}= useLocation()
@@ -40,6 +41,7 @@ const HomeLayout = () => {
       <div className={`h-19.5 ${pathname==="/home/player"? "hidden":" "} `}>
         <Player />
       </div>
+      <PrivacyPolicy/>
 
     </div>
   );
